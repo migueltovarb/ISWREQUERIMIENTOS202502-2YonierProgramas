@@ -41,4 +41,4 @@ Puntos finales:
 - Editar: http://127.0.0.1:8000/update/<id>/
 - Borrar: http://127.0.0.1:8000/delete/<id>/
 
-Si quieres, puedo crear un `superuser` y añadir instrucciones para deploy.
+
