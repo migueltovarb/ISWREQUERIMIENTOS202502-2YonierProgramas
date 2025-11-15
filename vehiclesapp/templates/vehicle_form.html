@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>{% if object %}Editar Vehículo{% else %}Nuevo Vehículo{% endif %}</h1>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="mb-3">
+      {{ form.placa.label_tag }}
+      {{ form.placa }}
+      {{ form.placa.errors }}
+    </div>
+    <div class="mb-3">
+      {{ form.marca.label_tag }}
+      {{ form.marca }}
+      {{ form.marca.errors }}
+    </div>
+    <div class="mb-3">
+      {{ form.modelo.label_tag }}
+      {{ form.modelo }}
+      {{ form.modelo.errors }}
+    </div>
+    <div class="mb-3">
+      {{ form.color.label_tag }}
+      {{ form.color }}
+      {{ form.color.errors }}
+    </div>
+    <button class="btn btn-primary" type="submit">Guardar</button>
+    <a class="btn btn-secondary" href="{% url 'vehicle_list' %}">Cancelar</a>
+  </form>
+{% endblock %}

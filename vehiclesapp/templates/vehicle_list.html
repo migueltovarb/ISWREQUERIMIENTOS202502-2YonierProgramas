@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Listado de Vehículos</h1>
+    <a class="btn btn-primary" href="{% url 'vehicle_create' %}">Nuevo Vehículo</a>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Placa</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Color</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for v in vehicles %}
+      <tr>
+        <td>{{ v.placa }}</td>
+        <td>{{ v.marca }}</td>
+        <td>{{ v.modelo }}</td>
+        <td>{{ v.get_color_display }}</td>
+        <td>
+          <a class="btn btn-sm btn-secondary" href="{% url 'vehicle_update' v.pk %}">Editar</a>
+          <a class="btn btn-sm btn-danger" href="{% url 'vehicle_delete' v.pk %}">Borrar</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="5">No hay vehículos registrados.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
