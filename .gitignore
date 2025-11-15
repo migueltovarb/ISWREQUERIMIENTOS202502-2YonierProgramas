@@ -1,0 +1,8 @@
+# Entornos Virtuales
+venv/
+*.pyc
+
+# Bases de datos y archivos de Django
+db.sqlite3
+/media/
+.env
