@@ -4,12 +4,12 @@ __pycache__/
 *.pyo
 *.pyd
 
-# Django / local
+# Django
 db.sqlite3
 /media
 /staticfiles
 
-# Entornos virtuales
+# Entorno virtual
 venv/
 env/
 .venv/
@@ -17,6 +17,6 @@ env/
 # VS Code
 .vscode/
 
-# OS
+# Sistema
 .DS_Store
 Thumbs.db
