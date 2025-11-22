@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<h2>Certificados</h2>
+
+<div class="card">
+    <form method="post">
+        {% csrf_token %}
+        <label>Ingrese su cédula:</label>
+        <input type="text" name="cedula" required />
+        <label>Ingrese su correo:</label>
+        <input type="email" name="correo" required />
+        <div style="margin-top:10px">
+            <button class="btn secondary" type="submit">Buscar mis certificados</button>
+        </div>
+    </form>
+</div>
+
+{% if voluntario %}
+<div class="card">
+    <h3>Certificados de {{ voluntario.nombre }}</h3>
+    {% if cert_rows %}
+        <table class="table">
+            <thead><tr><th>Actividad</th><th>Horas</th><th>Emitido</th><th>Acciones</th></tr></thead>
+            <tbody>
+            {% for row in cert_rows %}
+                <tr>
+                    <td>{{ row.cert.actividad.titulo }}</td>
+                    <td>{% if row.horas %}{{ row.horas }}{% else %}-{% endif %}</td>
+                    <td>{{ row.cert.fecha_emision|date:'d/m/Y' }}</td>
+                    <td>
+                        <a class="btn" href="{% url 'app:ver_certificado' row.cert.id %}">Ver</a>
+                        <a class="btn secondary" href="{% url 'app:ver_certificado' row.cert.id %}?pdf=1">Descargar PDF</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No se encontraron certificados para este voluntario.</p>
+    {% endif %}
+</div>
+{% endif %}
+
+{% endblock %}

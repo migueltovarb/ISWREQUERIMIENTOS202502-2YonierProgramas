@@ -1,0 +1,18 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="certificate">
+    <h1 style="font-family: 'Merriweather', serif;">Certificado de Reconocimiento</h1>
+    <p style="margin-top:20px;">La organización certifica que</p>
+    <h2 style="margin:6px 0;">{{ cert.voluntario.nombre }}</h2>
+    <p>Ha participado activamente en la actividad <strong>{{ cert.actividad.titulo }}</strong></p>
+    <p>Fecha de la actividad: {{ cert.actividad.fecha }}</p>
+    <p>Horas de participación: <strong>{% if horas %}{{ horas }}{% else %}-{% endif %}</strong></p>
+    <p style="margin-top:18px;">Emitido el {{ cert.fecha_emision|date:'d/m/Y' }}</p>
+
+    <div style="margin-top:24px;">
+        <a class="btn secondary" href="{% url 'app:ver_certificado' cert.id %}?pdf=1">Descargar PDF</a>
+        <a class="btn" href="/">Volver</a>
+    </div>
+
+</div>
+{% endblock %}

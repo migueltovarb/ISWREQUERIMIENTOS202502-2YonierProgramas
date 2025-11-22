@@ -1,0 +1,27 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<h2>FORMULARIO DE NUEVA ACTIVIDAD</h2>
+<div class="card center-card">
+    <form method="post">
+        {% csrf_token %}
+        <label>Título:</label>
+        {{ form.titulo }}
+        <label>Descripción:</label>
+        {{ form.descripcion }}
+        <label>Lugar:</label>
+        <input type="text" value="" />
+        <label>Fecha:</label>
+        {{ form.fecha }}
+        <label>Hora:</label>
+        {{ form.hora }}
+        <label>Duración:</label>
+        <input type="text" />
+        <label>Cupos disponibles:</label>
+        {{ form.cupos }}
+        <div class="actions">
+            <button class="btn primary" type="submit">[GUARDAR ACTIVIDAD]</button>
+            <a class="btn" href="{% url 'app:coord_panel' %}">[CANCELAR]</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

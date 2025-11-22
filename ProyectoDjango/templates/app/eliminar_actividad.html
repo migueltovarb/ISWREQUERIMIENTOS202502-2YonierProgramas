@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<h2>Eliminar actividad</h2>
+<div class="card">
+    <p>¿Desea eliminar la actividad <strong>{{ actividad.titulo }}</strong>?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn" type="submit">Eliminar</button>
+        <a class="btn" href="{% url 'app:coord_panel' %}">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

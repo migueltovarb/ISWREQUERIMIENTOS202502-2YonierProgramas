@@ -1,0 +1,28 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<h2>PANEL DE COORDINADOR - REGISTRO DE ASISTENCIA</h2>
+<h3>Selecciona la actividad: [{{ actividad.titulo }}] [Buscar]</h3>
+
+<form method="post">
+    {% csrf_token %}
+    <table class="table">
+        <thead><tr><th>ID</th><th>Nombre voluntario</th><th>Asistencia</th><th>observacion</th><th>Fecha</th></tr></thead>
+        <tbody>
+        {% for r in rows %}
+            <tr>
+                <td>{{ forloop.counter|stringformat:"02d" }}</td>
+                <td>{{ r.inscripcion.voluntario.nombre }}</td>
+                <td><input type="checkbox" name="asistio_{{ r.inscripcion.id }}" {% if r.asistencia and r.asistencia.asistio %}checked{% endif %}></td>
+                <td><input type="text" name="horas_{{ r.inscripcion.id }}" value="{% if r.asistencia and r.asistencia.horas %}{{ r.asistencia.horas }}{% endif %}"></td>
+                <td>{{ r.inscripcion.fecha_inscripcion|date:'d/m/Y' }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="actions">
+        <button class="btn" type="submit">[Guardar asistencia]</button>
+        <a class="btn" href="{% url 'app:coord_panel' %}">[Validar participación]</a>
+    </div>
+</form>
+
+{% endblock %}

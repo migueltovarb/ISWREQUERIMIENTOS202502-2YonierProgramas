@@ -1,0 +1,14 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<h2>EDITAR ACTIVIDAD</h2>
+<div class="card center-card">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="actions">
+            <button class="btn primary" type="submit">Guardar</button>
+            <a class="btn" href="{% url 'app:coord_panel' %}">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

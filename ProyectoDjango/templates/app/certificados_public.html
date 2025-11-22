@@ -1,0 +1,42 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<h2>Certificados</h2>
+
+<div class="card">
+    <form method="get">
+        <label>Selecciona actividad:</label>
+        <select name="actividad">
+            <option value="">-- Todas las actividades --</option>
+            {% for a in actividades %}
+                <option value="{{ a.id }}" {% if selected and selected == a.id|stringformat:"s" %}selected{% endif %}>{{ a.titulo }} - {{ a.fecha }}</option>
+            {% endfor %}
+        </select>
+        <button class="btn secondary" type="submit">Buscar participantes</button>
+    </form>
+</div>
+
+<div class="card">
+    <table class="table">
+        <thead>
+            <tr><th>Participante</th><th>Actividad</th><th>Horas</th><th>Emitido</th><th>Acciones</th></tr>
+        </thead>
+        <tbody>
+        {% for row in cert_rows %}
+            <tr>
+                <td>{{ row.cert.voluntario.nombre }}</td>
+                <td>{{ row.cert.actividad.titulo }}</td>
+                <td>{% if row.horas %}{{ row.horas }}{% else %}-{% endif %}</td>
+                <td>{{ row.cert.fecha_emision|date:'d/m/Y' }}</td>
+                <td>
+                    <a class="btn" href="{% url 'app:ver_certificado' row.cert.id %}">Ver</a>
+                    <a class="btn secondary" href="{% url 'app:ver_certificado' row.cert.id %}?pdf=1">Descargar PDF</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="5">No hay certificados disponibles.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

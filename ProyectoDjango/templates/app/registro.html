@@ -1,0 +1,29 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<div class="card center-card">
+    <h2>PLATAFORMA VOLUNTARIADO (ONG)</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label>Nombre completo:</label>
+        {{ form.nombre }}
+        <label>Documento de identidad:</label>
+        {{ form.cedula }}
+        <label>Correo electrónico:</label>
+        {{ form.correo }}
+        <label>Teléfono:</label>
+        {{ form.telefono }}
+        <label>Ciudad:</label>
+        {{ form.ciudad }}
+        <label>Habilidades o intereses:</label>
+        {{ form.habilidades }}
+        <label>Contraseña:</label>
+        {{ form.contrasena }}
+        <label>Confirmar Contraseña:</label>
+        {{ form.confirmar }}
+        <div class="actions">
+            <button class="btn primary" type="submit">Registrarse</button>
+        </div>
+    </form>
+    <p class="muted">¿Ya tienes cuenta? Iniciar sesión</p>
+</div>
+{% endblock %}

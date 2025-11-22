@@ -1,0 +1,19 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<h2>Inscripción a actividad</h2>
+<div class="card">
+    <h3>{{ actividad.titulo }}</h3>
+    <p>Fecha: {{ actividad.fecha }} - Hora: {{ actividad.hora }}</p>
+    <p>Cupos disponibles: {{ actividad.cupos }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <label>Documento de identidad:</label>
+        <input type="text" name="cedula" required />
+        <label>Correo electrónico:</label>
+        <input type="email" name="correo" required />
+        <div class="actions">
+            <button class="btn primary" type="submit">Inscribirme</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

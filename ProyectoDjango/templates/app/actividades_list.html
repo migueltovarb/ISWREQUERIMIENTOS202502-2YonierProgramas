@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+{% block content %}
+
+<!-- Hero / presentación de la plataforma -->
+<section class="hero">
+    <div class="hero-inner">
+        <h1>Plataforma de Voluntariado</h1>
+        <p>Conecta con actividades comunitarias, inscríbete fácilmente y registra tu participación. Participa, suma horas y recibe reconocimientos por tu aporte.</p>
+    </div>
+</section>
+
+<div class="search-row">
+    <form method="get">
+        Buscar actividad:
+        <input type="text" name="q" value="{{ q }}" />
+        <button class="btn secondary" type="submit">Buscar</button>
+    </form>
+</div>
+
+{% for act in actividades %}
+    <div class="card activity-card">
+        <div class="card-left">
+            <h3>{{ act.titulo }}</h3>
+            <p>lugar: {{ act.descripcion|default:"" }}</p>
+            <p>fecha: {{ act.fecha }}</p>
+            <p>cupos disponibles: {{ act.cupos|default:0 }}</p>
+            <p>descripción: {{ act.descripcion }}</p>
+        </div>
+        <div class="card-right">
+            <a class="btn primary large" href="{% url 'app:inscribir' act.id %}">INSCRIBIRME</a>
+        </div>
+    </div>
+{% empty %}
+    <p>No hay actividades disponibles.</p>
+{% endfor %}
+
+{% endblock %}

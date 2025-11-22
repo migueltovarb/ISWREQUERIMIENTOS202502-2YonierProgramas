@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Plataforma Voluntariado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/app/css/style.css">
+</head>
+<body>
+<nav class="topnav">
+    <div class="container">
+        <div class="brand">PLATAFORMA VOLUNTARIADO (ONG)</div>
+        <div class="nav-links">
+            <a href="/">Inicio</a>
+            <a href="/actividades/">Actividades</a>
+            <a href="/coordinador/">Voluntarios</a>
+            <a href="{% url 'app:mis_certificados' %}">Certificados</a>
+            <a href="{% url 'app:registro' %}">Registrarse</a>
+            <a href="#">Cerrar sesión</a>
+        </div>
+    </div>
+</nav>
+
+<main class="container main">
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="msg {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">* 2025 ONG Voluntariado</footer>
+</body>
+</html>

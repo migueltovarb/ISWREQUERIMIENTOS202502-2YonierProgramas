@@ -1,0 +1,100 @@
+/* Style tile global */
+:root{
+  --verde-principal: #2E7D32;
+  --verde-claro: #66BB6A;
+  --gris-claro: #F5F5F5;
+  --gris-oscuro: #333333;
+  --azul-info: #1976D2;
+  --rojo-error: #C62828;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--gris-claro);
+  color: var(--gris-oscuro);
+}
+
+.topnav{
+  position:fixed;
+  top:0; left:0; right:0;
+  background:#fff;
+  border-bottom:1px solid #ddd;
+  z-index:1000;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.topnav .container{
+  max-width:1000px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:10px 15px;
+}
+.topnav .brand{ font-weight:700; }
+.topnav .nav-links a{ margin-left:15px; color:var(--gris-oscuro); text-decoration:none; }
+
+.container{ max-width:760px; margin:90px auto 40px; padding:0 12px; }
+.main{ min-height:60vh; }
+
+.card{ background:#fff; border:1px solid #e6e6e6; border-radius:6px; padding:12px; margin-bottom:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04); max-width:720px; margin-left:auto; margin-right:auto; }
+.center-card{ max-width:640px; margin:0 auto; }
+
+h2{ text-align:center; font-family:'Poppins', sans-serif; margin:10px 0 20px; }
+
+.search-row{ display:flex; justify-content:center; margin-bottom:12px; }
+.search-row input[type="text"]{ padding:8px;border:1px solid #ccc;border-radius:3px;width:300px }
+.search-row input[type="text"]:focus{ border-color:var(--verde-principal); outline:none }
+
+.activity-card{ display:flex; justify-content:space-between; align-items:center; gap:12px; max-width:700px; margin:6px auto }
+.card-left{ width:60%; }
+.card-right{ width:36%; text-align:center }
+
+.btn{ display:inline-block; padding:8px 12px; border-radius:4px; text-decoration:none; cursor:pointer; border:1px solid transparent; background:transparent; color:var(--gris-oscuro); }
+.btn.primary{ background:var(--verde-principal); color:#fff; border-color:var(--verde-principal); }
+.btn.primary:hover{ background:#265f28 }
+.btn.secondary{ background:#fff; border:2px solid var(--verde-principal); color:var(--verde-principal); }
+.btn.secondary:hover{ background:var(--verde-claro); color:#fff }
+.btn.large{ padding:10px 14px; font-weight:700 }
+
+.actions{ margin-top:12px; }
+
+input[type="text"], input[type="email"], input[type="password"], textarea, select{ width:100%; padding:8px; border:1px solid #ccc; border-radius:3px; box-sizing:border-box }
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus{ border-color:var(--verde-principal); outline:none }
+
+/* checkbox styling */
+input[type="checkbox"]{ transform:scale(1.2); margin-right:6px }
+
+.table{ width:100%; border-collapse:collapse; margin-bottom:16px }
+.table thead th{ border-bottom:2px solid #ddd; padding:8px; text-align:left }
+.table tbody td{ padding:8px; border-bottom:1px solid #eee }
+.table tbody tr:nth-child(odd){ background:#fff }
+.table tbody tr:nth-child(even){ background:#fafafa }
+
+.messages{ margin-bottom:12px }
+.msg{ padding:10px; border-radius:4px; margin-bottom:6px }
+.msg.error{ background: #ffe6e6; border:1px solid var(--rojo-error); color:var(--rojo-error) }
+.msg.success{ background: #e6ffed; border:1px solid var(--verde-claro); color:var(--verde-principal) }
+
+.footer{ text-align:center; padding:14px 0; border-top:1px solid #e6e6e6; margin-top:20px; background:#fff }
+
+.certificate{ max-width:680px; margin:20px auto; padding:22px; background:#fff; border:1px solid #ddd; text-align:center }
+.certificate h1{ color:var(--verde-principal); font-family:'Merriweather', serif }
+
+/* small screens */
+@media(max-width:700px){
+  .card-left, .card-right{ width:100%; display:block }
+  .topnav .container{ flex-direction:column; align-items:flex-start }
+}
+
+/* Hero adjustments */
+.hero{ max-width:720px; margin:14px auto; padding:14px; background:#fff; border-radius:6px; box-shadow:0 4px 12px rgba(0,0,0,0.03); }
+.hero .hero-inner{ max-width:680px; margin:0 auto; text-align:left }
+.hero h1{ margin:6px 0 6px; font-size:24px }
+.hero p{ margin:0; color:#555 }
+
+/* Center tables and make them narrower */
+.table{ max-width:700px; margin:0 auto 16px }
+
+/* Slightly smaller headings */
+h2{ font-size:18px }
+
+/* Compact content spacing */
+.card-left p, .card-right p { margin:6px 0; line-height:1.25 }
+.activity-card .card-left h3{ margin:6px 0 8px; font-size:18px }

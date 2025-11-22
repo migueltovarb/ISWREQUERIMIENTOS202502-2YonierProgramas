@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<h2>Voluntarios</h2>
+<div class="actions-row">
+    <a class="btn" href="{% url 'app:certificados_panel' %}">[CERTIFICADOS]</a>
+    <a class="btn" href="/">[SALIR]</a>
+</div>
+
+<table class="table">
+    <thead><tr><th>Título</th><th>Participantes inscritos</th><th>Total horas</th><th>Acciones</th></tr></thead>
+    <tbody>
+    {% for row in actividades_rows %}
+        <tr>
+            <td>{{ row.actividad.titulo }}</td>
+            <td>
+                {% if row.participantes %}
+                    {{ row.participantes|join:", " }}
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>
+                {% if row.total_horas %}
+                    {{ row.total_horas }}
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>
+                <a class="btn" href="{% url 'app:registrar_asistencia' row.actividad.id %}">asistencia</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

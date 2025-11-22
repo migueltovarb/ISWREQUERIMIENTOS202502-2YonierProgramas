@@ -1,0 +1,15 @@
+{% extends 'app/base.html' %}
+{% block content %}
+<h2>GENERAR CERTIFICADOS</h2>
+<p>Selecciona una actividad para generar certificados</p>
+<form method="post" action="{% url 'app:generar_certificados' %}">
+    {% csrf_token %}
+    <select name="actividad">
+        {% for a in actividades %}
+            <option value="{{ a.id }}">{{ a.titulo }} - {{ a.fecha }}</option>
+        {% endfor %}
+    </select>
+    <button class="btn" type="submit">Buscar participantes</button>
+</form>
+
+{% endblock %}
